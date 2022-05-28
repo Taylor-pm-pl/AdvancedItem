@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace BlockMagicDev\AdvancedItem\session;
 
 use BlockMagicDev\AdvancedItem\Loader;
-use BlockMagicDev\AdvancedItem\utils\Configuration;
-
 use function time;
 
 class Session {
@@ -19,7 +17,7 @@ class Session {
 	public function __construct(string $type, mixed $data) {
 		$this->type = $type;
 		$this->data = $data;
-		$this->time = time() + Configuration::getInt(Loader::$config, 'Time-Confirm');
+		$this->time = time() + Loader::getInstance()->config->getInt('Time-Confirm');
 	}
 
 	public function getType() : string {

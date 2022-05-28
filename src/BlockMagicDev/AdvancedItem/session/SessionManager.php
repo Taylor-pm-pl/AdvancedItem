@@ -14,8 +14,8 @@ class SessionManager {
 
 	public function getSession(Player $player) : Session|null {
 		$xuid = $player->getXuid();
-		if (isset(Loader::$sessions[$xuid])) {
-			return Loader::$sessions[$xuid];
+		if (isset(Loader::getInstance()->sessions[$xuid])) {
+			return Loader::getInstance()->sessions[$xuid];
 		} else {
 			return null;
 		}
@@ -24,13 +24,13 @@ class SessionManager {
 
 	public function createSession(Player $player, string $type, mixed $data) : void {
 		$xuid = $player->getXuid();
-		if (!isset(Loader::$sessions[$xuid])) {
-			Loader::$sessions[$xuid] = new Session($type, $data);
+		if (!isset(Loader::getInstance()->sessions[$xuid])) {
+			Loader::getInstance()->sessions[$xuid] = new Session($type, $data);
 		}
 	}
 
 	public function removeSession(Player $player) : void {
-		unset(Loader::$sessions[$player->getXuid()]);
+		unset(Loader::getInstance()->sessions[$player->getXuid()]);
 	}
 
 	public function equalsTime(Player $player, int $time) : bool {

@@ -7,24 +7,33 @@ namespace BlockMagicDev\AdvancedItem;
 use BlockMagicDev\AdvancedItem\command\AdvancedItem;
 use BlockMagicDev\AdvancedItem\listeners\PlayerChat;
 use BlockMagicDev\AdvancedItem\session\SessionManager;
+use BlockMagicDev\AdvancedItem\utils\Configuration;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 use ReflectionException;
 
 class Loader extends PluginBase {
-	public static Config $config;
 
-	public static Config $messages;
-	/**@var array<int, Item> $sessions */
-	public static array $sessions = [];
+	use SingletonTrait;
 
-	public function onEnable() : void {
+	public Configuration $config;
+
+	public Configuration $messages;
+	/**@var $sessions array<int, Session> */
+	public array $sessions = [];
+
+	protected function onLoad(): void
+	{
+		self::setInstance($this);
+	}
+
+	protected function onEnable() : void {
 		$this->getServer()->getCommandMap()->register('advanceditem', new AdvancedItem($this));
 		$this->saveResource('config.yml');
 		$this->saveResource('messages.yml');
 		$this->initListeners();
-		self::$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-		self::$messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+		$this->config = new Configuration($this->getDataFolder() . "config.yml", Configuration::YAML);
+		$this->messages = new Configuration($this->getDataFolder() . "messages.yml", Configuration::YAML);
 	}
 
 	private function initListeners() : void {
@@ -42,7 +51,7 @@ class Loader extends PluginBase {
 
 	public function reloadAll() : void {
 		$this->reloadConfig();
-		self::$config = self::$config->getAll();
-		self::$messages = self::$messages->getAll();
+		$this->config = $this->config->getAll();
+		$this->messages = $this->messages->getAll();
 	}
 }

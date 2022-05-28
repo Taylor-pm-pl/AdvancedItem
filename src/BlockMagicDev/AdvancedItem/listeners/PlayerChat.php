@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace BlockMagicDev\AdvancedItem\listeners;
 
 use BlockMagicDev\AdvancedItem\Loader;
-use BlockMagicDev\AdvancedItem\utils\Configuration;
 use BlockMagicDev\AdvancedItem\utils\ItemUtils;
 use Closure;
 use pocketmine\event\EventPriority;
@@ -22,7 +21,7 @@ class PlayerChat implements Listener {
 
 	public function onChat(PlayerChatEvent $event) : void {
 		$player = $event->getPlayer();
-		$msg = Loader::$messages;
+		$msg = Loader::getInstance()->messages;
 		$message = $event->getMessage();
 		$sessionMgr = Loader::getSessionManager();
 		if ($message == 'yes') {
@@ -33,25 +32,25 @@ class PlayerChat implements Listener {
 							ItemUtils::changeName($player, strval($sessionMgr->getSession($player)->getData()));
 							$sessionMgr->removeSession($player);
 							$event->cancel();
-							$player->sendMessage(Configuration::getString($msg, 'messages.setname.success'));
+							$player->sendMessage($msg->getString('messages.setname.success'));
 							break;
 						case 'setlore':
 							ItemUtils::setLore($player, strval($sessionMgr->getSession($player)->getData()));
 							$sessionMgr->removeSession($player);
 							$event->cancel();
-							$player->sendMessage(Configuration::getString($msg, 'messages.setlore.success'));
+							$player->sendMessage($msg->getString('messages.setlore.success'));
 							break;
 					}
 				} else {
 					$event->cancel();
-					$player->sendMessage(Configuration::getString($msg, 'messages.timeout'));
+					$player->sendMessage($msg->getString('messages.timeout'));
 				}
 			}
 		} elseif ($message == 'no') {
 			if ($sessionMgr->getSession($player) !== null) {
 				$event->cancel();
 				$sessionMgr->removeSession($player);
-				$player->sendMessage(Configuration::getString($msg, 'messages.cancel-success'));
+				$player->sendMessage($msg->getString('messages.cancel-success'));
 			}
 		}
 	}
