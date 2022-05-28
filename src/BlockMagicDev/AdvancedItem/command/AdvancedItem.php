@@ -36,7 +36,7 @@ class AdvancedItem extends Command implements PluginOwned {
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void {
 		$msg = Loader::getInstance()->messages;
 		$config = Loader::getInstance()->config;
-		if ($sender instanceof Player){
+		if ($sender instanceof Player) {
 			if (!ItemUtils::checkItem($sender)) {
 				$sender->sendMessage($msg->getString('messages.item-not-found'));
 				return;

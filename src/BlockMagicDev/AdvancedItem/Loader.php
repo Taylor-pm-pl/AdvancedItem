@@ -13,7 +13,6 @@ use pocketmine\utils\SingletonTrait;
 use ReflectionException;
 
 class Loader extends PluginBase {
-
 	use SingletonTrait;
 
 	public Configuration $config;
@@ -22,8 +21,7 @@ class Loader extends PluginBase {
 	/**@var $sessions array<int, Session> */
 	public array $sessions = [];
 
-	protected function onLoad(): void
-	{
+	protected function onLoad() : void {
 		self::setInstance($this);
 	}
 

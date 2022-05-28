@@ -6,17 +6,18 @@ namespace BlockMagicDev\AdvancedItem\utils;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
+use function boolval;
 use function intval;
 use function strval;
 
 class Configuration extends Config {
 	public function getString(string $key) : string {
-		$result = strval(TextFormat::colorize(strval($this->getNested($key, $key))));
+		$result = TextFormat::colorize(strval($this->getNested($key, $key)));
 		return $result;
 	}
 
 	public function getBool(string $key) : bool {
-		$result = $this->get($key, true);
+		$result = boolval($this->get($key, true));
 		return $result;
 	}
 
