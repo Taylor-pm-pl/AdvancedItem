@@ -40,7 +40,7 @@ class Loader extends PluginBase {
 
 	public Configuration $messages;
 	/**@var $sessions array<int, Session> */
-	public array $sessions = [];
+	public $sessions = [];
 
 	protected function onLoad() : void {
 		self::setInstance($this);
