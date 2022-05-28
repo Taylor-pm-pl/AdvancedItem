@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BlockMagicDev\AdvancedItem\command;
 
 use BlockMagicDev\AdvancedItem\Loader;
+use BlockMagicDev\AdvancedItem\utils\Configuration;
 use BlockMagicDev\AdvancedItem\utils\ItemUtils;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -36,21 +37,21 @@ class AdvancedItem extends Command implements PluginOwned {
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void {
 		$msg = Loader::$messages;
 		$config = Loader::$config;
-		if($sender instanceof Player){
+		if($sender instanceof Player) {
 			if (!ItemUtils::checkItem($sender)) {
-				$sender->sendMessage($msg->getString('messages.item-not-found'));
+				$sender->sendMessage(Configuration::getString($msg, 'messages.item-not-found'));
 				return;
 			}
 			if (isset($args[0])) {
 				switch (strtolower($args[0])) {
 					case "setname":
 						if (!isset($args[1])) {
-							$sender->sendMessage($msg->getString('messages.setname.usage'));
+							$sender->sendMessage(Configuration::getString($msg, 'messages.setname.usage'));
 							return;
 						}
-						if ($config->getBool('Change-confirm')) {
+						if (Configuration::getBool($config, 'Change-confirm')) {
 							Loader::getSessionManager()->createSession($sender, 'changename', $args[1]);
-							$sender->sendMessage($msg->getString('messages.confirm'));
+							$sender->sendMessage(Configuration::getString($msg, 'messages.confirm'));
 							return;
 						} else {
 							ItemUtils::changeName($sender, strval($args[1]));
@@ -59,15 +60,15 @@ class AdvancedItem extends Command implements PluginOwned {
 						break;
 					case "setlore":
 						if (!isset($args[2])) {
-							$sender->sendMessage($msg->getString('messages.setlore.usage'));
+							$sender->sendMessage(Configuration::getString($msg, 'messages.setlore.usage'));
 							return;
 						}
 						$line = $args[1];
 						unset($args[1]);
 						array_shift($args);
-						if ($config->getBool('Change-confirm')) {
+						if (Configuration::getBool($config, 'Change-confirm')) {
 							Loader::getSessionManager()->createSession($sender, 'setlore', $line . ":" . trim(implode(" ", $args)));
-							$sender->sendMessage($msg->getString('messages.confirm'));
+							$sender->sendMessage(Configuration::getString($msg, 'messages.confirm'));
 							return;
 						} else {
 							ItemUtils::setLore($sender, $line . ":" . trim(implode(" ", $args)));
@@ -76,7 +77,7 @@ class AdvancedItem extends Command implements PluginOwned {
 						break;
 					case "reload":
 						$this->ai->reloadConfig();
-						$sender->sendMessage($msg->getString('messages.reload.success'));
+						$sender->sendMessage(Configuration::getString($msg, 'messages.reload.success'));
 						break;
 				}
 			} else {

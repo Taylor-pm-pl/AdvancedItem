@@ -10,19 +10,19 @@ use function boolval;
 use function intval;
 use function strval;
 
-class Configuration extends Config {
-	public function getString(string $key) : string {
-		$result = TextFormat::colorize(strval($this->getNested($key, $key)));
+class Configuration {
+	public static function getString(Config $file, string $key) : string {
+		$result = TextFormat::colorize(strval($file->getNested($key, $key)));
 		return $result;
 	}
 
-	public function getBool(string $key) : bool {
-		$result = boolval($this->get($key, true));
+	public static function getBool(Config $file, string $key) : bool {
+		$result = boolval($file->get($key, true));
 		return $result;
 	}
 
-	public function getInt(string $key) : int {
-		$result = intval($this->get($key, 0));
+	public static function getInt(Config $file, string $key) : int {
+		$result = intval($file->get($key, 0));
 		return $result;
 	}
 }

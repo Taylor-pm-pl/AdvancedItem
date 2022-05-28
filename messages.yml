@@ -1,0 +1,13 @@
+messages:
+  confirm: 'Chat <yes/no> to confirm in 5s!'
+  item-not-found: 'Please hold item in hand!'
+  cancel-success: 'Cancel edit successfully!'
+  timeout: 'Timeout!'
+  setname:
+    usage: '/advanceditem setname <string: name>'
+    success: 'Changename item successfully!'
+  setlore:
+    usage: '/advanceditem setlore <int: line> <string: lore>'
+    success: 'Changelore item successfully!'
+  reload:
+    success: 'Configuration reloaded!'

@@ -7,14 +7,14 @@ namespace BlockMagicDev\AdvancedItem;
 use BlockMagicDev\AdvancedItem\command\AdvancedItem;
 use BlockMagicDev\AdvancedItem\listeners\PlayerChat;
 use BlockMagicDev\AdvancedItem\session\SessionManager;
-use BlockMagicDev\AdvancedItem\utils\Configuration;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use ReflectionException;
 
 class Loader extends PluginBase {
-	public static Configuration $config;
+	public static Config $config;
 
-	public static Configuration $messages;
+	public static Config $messages;
 	/**@var array<int, Item> $sessions */
 	public static array $sessions = [];
 
@@ -23,8 +23,8 @@ class Loader extends PluginBase {
 		$this->saveResource('config.yml');
 		$this->saveResource('messages.yml');
 		$this->initListeners();
-		self::$config = new Configuration($this->getDataFolder() . "config.yml", Configuration::YAML);
-		self::$messages = new Configuration($this->getDataFolder() . "messages.yml", Configuration::YAML);
+		self::$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+		self::$messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
 	}
 
 	private function initListeners() : void {
