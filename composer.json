@@ -1,0 +1,50 @@
+{
+    "name": "blockmagicdev/advanceditem",
+    "description": "A plugin for PocketMine-MP that custom and improves items.",
+    "type": "project",
+    "keywords": [
+      "advanceditem",
+      "pocketmine-mp"
+    ],
+    "require": {
+      "php": "^8.0",
+      "friendsofphp/php-cs-fixer": "^3.8"
+    },
+    "require-dev": {
+      "phpstan/phpstan": "^1.2",
+      "friendsofphp/php-cs-fixer": "^3.3",
+      "pocketmine/pocketmine-mp": "^4.0"
+    },
+    "license": "GPL-3.0",
+    "readme": "../README.md",
+    "homepage": "https://github.com/BlockMagicDev",
+    "autoload": {
+        "psr-4": {
+            "Blockmagic\\AdvancedItem\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DavidGlitch04",
+            "homepage": "https://github.com/DavidGlitch04",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+      "email": "blockmagicdev@gmail.com",
+      "issues": "https://github.com/BlockMagicDev/AdvancedItem/issues",
+      "wiki": "https://github.com/BlockMagicDev/AdvancedItem/wiki",
+      "source": "https://github.com/BlockMagicDev/AdvancedItem"
+    },
+    "funding": [
+      {
+         "type": "patreon",
+         "url": "https://www.patreon.com/BlockMagic"
+      }
+    ],
+    "config": {
+       "allow-plugins": {
+          "phpstan/extension-installer": true
+       }
+    }
+}

@@ -1,0 +1,11 @@
+name: AdvancedItem
+main: BlockMagicDev\AdvancedItem\Loader
+api: 4.0.0
+version: 1.0.0
+author: BlockMagicDev
+description: A plugin for PocketMine-MP that custom and improves items.
+
+permissions:
+  advanceditem.allow.command:
+    description: Permission use command /advanceditem
+    default: op
