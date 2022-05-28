@@ -6,6 +6,7 @@ namespace BlockMagicDev\AdvancedItem\utils;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
+use function boolval;
 use function intval;
 use function strval;
 

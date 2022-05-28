@@ -4,24 +4,23 @@ declare(strict_types=1);
 
 namespace BlockMagicDev\AdvancedItem\utils;
 
-use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use function explode;
 
 class ItemUtils {
-	public static function checkItem(CommandSender|Player $player) : bool {
+	public static function checkItem(Player $player) : bool {
 		$iditem = $player->getInventory()->getItemInHand()->getId();
 		return $iditem !== 0;
 	}
 
-	public static function changeName(CommandSender|Player $player, string $newName) : void {
+	public static function changeName(Player $player, string $newName) : void {
 		$item = $player->getInventory()->getItemInHand();
 		$item->setCustomName($newName);
 		$player->getInventory()->setItemInHand($item);
 	}
 
-	public static function setLore(CommandSender|Player $player, string $combine) : void {
+	public static function setLore(Player $player, string $combine) : void {
 		$combine = explode(":", $combine);
 		$line = $combine[0] ?? 1;
 		$string = $combine[1] ?? "";

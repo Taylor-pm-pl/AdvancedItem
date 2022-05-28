@@ -15,7 +15,7 @@ class Loader extends PluginBase {
 	public static Configuration $config;
 
 	public static Configuration $messages;
-	/**@var $sessions array */
+	/**@var array<int, Item> $sessions */
 	public static array $sessions = [];
 
 	public function onEnable() : void {
