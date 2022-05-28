@@ -22,7 +22,7 @@ class SessionManager {
 	}
 
 
-	public function createSession(Player $player, string $type, mixed $data) {
+	public function createSession(Player $player, string $type, mixed $data) : void {
 		$xuid = $player->getXuid();
 		if (!isset(Loader::$sessions[$xuid])) {
 			Loader::$sessions[$xuid] = new Session($type, $data);

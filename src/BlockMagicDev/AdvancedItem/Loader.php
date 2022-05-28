@@ -15,8 +15,8 @@ class Loader extends PluginBase {
 	public static Configuration $config;
 
 	public static Configuration $messages;
-
-	public static array $sessions;
+	/**@var $sessions array */
+	public static array $sessions = [];
 
 	public function onEnable() : void {
 		$this->getServer()->getCommandMap()->register('advanceditem', new AdvancedItem($this));

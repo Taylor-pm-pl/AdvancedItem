@@ -11,12 +11,12 @@ use function strval;
 
 class Configuration extends Config {
 	public function getString(string $key) : string {
-		$result = strval(TextFormat::colorize($this->getNested($key, $key)));
+		$result = TextFormat::colorize(strval($this->getNested($key, $key)));
 		return $result;
 	}
 
 	public function getBool(string $key) : bool {
-		$result = $this->get($key, true);
+		$result = boolval($this->get($key, true));
 		return $result;
 	}
 
