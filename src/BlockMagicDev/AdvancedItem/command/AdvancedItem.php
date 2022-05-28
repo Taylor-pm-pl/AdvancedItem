@@ -77,7 +77,6 @@ class AdvancedItem extends Command implements PluginOwned {
 							ItemUtils::changeName($sender, strval($args[1]));
 							return;
 						}
-						break;
 					case "setlore":
 						if (!isset($args[2])) {
 							$sender->sendMessage($msg->getString('messages.setlore.usage'));
@@ -94,7 +93,6 @@ class AdvancedItem extends Command implements PluginOwned {
 							ItemUtils::setLore($sender, $line . ":" . trim(implode(" ", $args)));
 							return;
 						}
-						break;
 					case "reload":
 						$this->ai->reloadConfig();
 						$sender->sendMessage($msg->getString('messages.reload.success'));
