@@ -39,7 +39,7 @@ class Loader extends PluginBase {
 	public Configuration $config;
 	/**@var array<int|string, mixed> */
 	public Configuration $messages;
-	/**@var array<string, Session> $sessions */
+	/** @property array<string, Session> $sessions */
 	public array $sessions;
 
 	protected function onLoad() : void {
