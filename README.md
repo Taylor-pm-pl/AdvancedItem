@@ -23,3 +23,8 @@ setname | Change name of item in hand  |
 setlore | Change lore of item in hand |
 duplicated | Duplicated of item in hand |
 reload | Reload the config |
+
+## All Contributors
+<a href="https://github.com/BlockMagicDev/AdvancedItem/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=BlockMagicDev/AdvancedItem" />
+</a>
