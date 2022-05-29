@@ -70,7 +70,7 @@ class Loader extends PluginBase {
 
 	public function reloadAll() : void {
 		$this->reloadConfig();
-		$this->config = $this->config->getAll();
-		$this->messages = $this->messages->getAll();
+		$this->config = $this->config;
+		$this->messages = $this->messages;
 	}
 }
