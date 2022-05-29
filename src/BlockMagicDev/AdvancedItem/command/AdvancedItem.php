@@ -94,7 +94,7 @@ class AdvancedItem extends Command implements PluginOwned {
 							return;
 						}
 					case "reload":
-						$this->ai->reloadConfig();
+						$this->ai->reloadAll();
 						$sender->sendMessage($msg->getString('messages.reload.success'));
 						break;
 				}

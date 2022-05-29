@@ -31,7 +31,6 @@ use BlockMagicDev\AdvancedItem\session\SessionManager;
 use BlockMagicDev\AdvancedItem\utils\Configuration;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
-use ReflectionException;
 
 class Loader extends PluginBase {
 	use SingletonTrait;
@@ -50,18 +49,9 @@ class Loader extends PluginBase {
 		$this->getServer()->getCommandMap()->register('advanceditem', new AdvancedItem($this));
 		$this->saveResource('config.yml');
 		$this->saveResource('messages.yml');
-		$this->initListeners();
+		new PlayerChat($this);
 		$this->config = new Configuration($this->getDataFolder() . "config.yml", Configuration::YAML);
 		$this->messages = new Configuration($this->getDataFolder() . "messages.yml", Configuration::YAML);
-	}
-
-	private function initListeners() : void {
-		try {
-			new PlayerChat($this);
-		} catch (ReflectionException $exception) {
-			$this->getLogger()->critical($exception->getMessage());
-			$this->getServer()->getPluginManager()->disablePlugin($this);
-		}
 	}
 
 	public static function getSessionManager() : SessionManager {
@@ -70,7 +60,7 @@ class Loader extends PluginBase {
 
 	public function reloadAll() : void {
 		$this->reloadConfig();
-		$this->config = $this->config;
-		$this->messages = $this->messages;
+		$this->config->reload();
+		$this->messages->reload();
 	}
 }
