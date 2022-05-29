@@ -112,7 +112,6 @@ class AdvancedItem extends Command implements PluginOwned {
 				}
 			} else {
 				$sender->sendMessage(TextFormat::colorize("&b-- &aAvailable Commands &b--"));
-				$sender->sendMessage(TextFormat::colorize("&d/advanceditem info &b-&a Show info this plugin"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem setname &b-&a Change name of item in hand!"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem setlore &b-&a Change lore of item in hand!"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem duplicated &b-&a Duplicated of item in hand!"));
