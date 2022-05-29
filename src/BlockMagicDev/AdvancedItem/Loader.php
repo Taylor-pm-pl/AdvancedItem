@@ -37,9 +37,9 @@ class Loader extends PluginBase {
 	use SingletonTrait;
 
 	public Configuration $config;
-	
+
 	public Configuration $messages;
-	/**@property array<string, Session> */
+	/**@var array<string, Session> */
 	public array $sessions;
 
 	protected function onLoad() : void {
