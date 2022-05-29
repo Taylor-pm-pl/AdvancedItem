@@ -33,7 +33,7 @@ class SessionManager {
 		//NOTHING
 	}
 
-	public function getSession(Player $player) : Session|null {
+	public function getSession(Player $player) : mixed {
 		$xuid = $player->getXuid();
 		if (isset(Loader::getInstance()->sessions[$xuid])) {
 			return Loader::getInstance()->sessions[$xuid];
