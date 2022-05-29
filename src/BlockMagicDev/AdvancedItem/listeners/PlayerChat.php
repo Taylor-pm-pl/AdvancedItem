@@ -62,6 +62,12 @@ class PlayerChat implements Listener {
 							$event->cancel();
 							$player->sendMessage($msg->getString('messages.setlore.success'));
 							break;
+						case 'duplicated':
+							ItemUtils::Duplicated($player);
+							$sessionMgr->removeSession($player);
+							$event->cancel();
+							$player->sendMessage($msg->getString('messages.duplicated.success'));
+							break;
 					}
 				} else {
 					$event->cancel();

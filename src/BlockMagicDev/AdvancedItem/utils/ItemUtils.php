@@ -59,4 +59,13 @@ class ItemUtils {
 		$item->setLore($newLore);
 		$player->getInventory()->setItemInHand($item);
 	}
+
+	public static function Duplicated(Player $player) : void {
+		$inventory = $player->getInventory();
+		$item = $inventory->getItemInHand();
+		if (!$inventory->canAddItem($item)) {
+			$player->getWorld()->dropItem($player->getPosition(), $item);
+		}
+		$player->getInventory()->addItem($item);
+	}
 }

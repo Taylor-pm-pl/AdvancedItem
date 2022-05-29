@@ -75,6 +75,7 @@ class AdvancedItem extends Command implements PluginOwned {
 							return;
 						} else {
 							ItemUtils::changeName($sender, strval($args[1]));
+							$sender->sendMessage($msg->getString('messages.setname.success'));
 							return;
 						}
 					case "setlore":
@@ -91,6 +92,17 @@ class AdvancedItem extends Command implements PluginOwned {
 							return;
 						} else {
 							ItemUtils::setLore($sender, $line . ":" . trim(implode(" ", $args)));
+							$sender->sendMessage($msg->getString('messages.setlore.success'));
+							return;
+						}
+					case "duplicated":
+						if ($config->getBool('Change-confirm')) {
+							Loader::getSessionManager()->createSession($sender, 'duplicated', "null");
+							$sender->sendMessage($msg->getString('messages.confirm'));
+							return;
+						} else {
+							ItemUtils::Duplicated($sender);
+							$sender->sendMessage($msg->getString('messages.duplicated.success'));
 							return;
 						}
 					case "reload":
@@ -103,6 +115,7 @@ class AdvancedItem extends Command implements PluginOwned {
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem info &b-&a Show info this plugin"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem setname &b-&a Change name of item in hand!"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem setlore &b-&a Change lore of item in hand!"));
+				$sender->sendMessage(TextFormat::colorize("&d/advanceditem duplicated &b-&a Duplicated of item in hand!"));
 				$sender->sendMessage(TextFormat::colorize("&d/advanceditem reload &b-&a Reload the config"));
 			}
 		}

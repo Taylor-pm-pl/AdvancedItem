@@ -11,5 +11,10 @@ messages:
     success: 'Changelore item successfully!'
   duplicated:
     success: 'Duplicated item successfully!'
+  setdamage:
+    usage: '/advanceditem setdamage <int: damage>'
+    sword: 'Item hold must is sword!'
+    int: 'Damage must is integer'
+    success: 'setDamage item successfully!'
   reload:
     success: 'Configuration reloaded!'
