@@ -26,6 +26,7 @@ declare(strict_types=1);
 namespace BlockMagicDev\AdvancedItem\listeners;
 
 use BlockMagicDev\AdvancedItem\Loader;
+use BlockMagicDev\AdvancedItem\session\Session;
 use BlockMagicDev\AdvancedItem\utils\ItemUtils;
 use Closure;
 use pocketmine\event\EventPriority;
@@ -46,7 +47,7 @@ class PlayerChat implements Listener {
 		$message = $event->getMessage();
 		$sessionMgr = Loader::getSessionManager();
 		if ($message == 'yes') {
-			if ($sessionMgr->getSession($player) !== null) {
+			if ($sessionMgr->getSession($player) instanceof Session) {
 				if ($sessionMgr->equalsTime($player, time())) {
 					switch ($sessionMgr->getSession($player)->getType()) {
 						case 'changename':
