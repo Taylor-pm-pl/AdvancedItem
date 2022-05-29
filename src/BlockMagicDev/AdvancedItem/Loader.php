@@ -49,9 +49,9 @@ class Loader extends PluginBase {
 		$this->getServer()->getCommandMap()->register('advanceditem', new AdvancedItem($this));
 		$this->saveResource('config.yml');
 		$this->saveResource('messages.yml');
-		new PlayerChat($this);
 		$this->config = new Configuration($this->getDataFolder() . "config.yml", Configuration::YAML);
 		$this->messages = new Configuration($this->getDataFolder() . "messages.yml", Configuration::YAML);
+		new PlayerChat($this);
 	}
 
 	public static function getSessionManager() : SessionManager {
