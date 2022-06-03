@@ -1,2 +1,4 @@
+# Set it to true to enable change confirmation
 Change-confirm: true
+# Confirmation time changes
 Time-Confirm: 5
