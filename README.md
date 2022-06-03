@@ -2,6 +2,7 @@
   <img src="assets/images/advanceditem.png" width="375px" />
 </div>
 
+# Getting started
 ✨ **A plugin for PocketMine-MP that improves items.**
 
 # Badges
