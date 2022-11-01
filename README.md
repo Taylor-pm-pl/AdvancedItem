@@ -7,7 +7,7 @@
 
 # Badges
 
-[![Lint](https://poggit.pmmp.io/ci.shield/BlockMagicDev/AdvancedItem/AdvancedItem)](https://poggit.pmmp.io/ci/BlockMagicDev/AdvancedItem/AdvancedItem)
+[![Lint](https://poggit.pmmp.io/ci.shield/VCraftGames/AdvancedItem/AdvancedItem)](https://poggit.pmmp.io/ci/VCraftGames/AdvancedItem/AdvancedItem)
 [![PHPStan](https://github.com/BlockMagicDev/AdvancedItem/actions/workflows/php.yml/badge.svg)](https://github.com/BlockMagicDev/AdvancedItem/actions/workflows/php.yml/badge.svg)
 [![license](https://img.shields.io/badge/license-GPL_3.0-blue.svg)](https://github.com/BlockMagicDev/AdvancedItem/blob/main/LICENSE)
 [![status](https://img.shields.io/badge/status-active-brightgreen.svg)](#status)
