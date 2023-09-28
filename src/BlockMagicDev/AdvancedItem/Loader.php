@@ -41,11 +41,8 @@ class Loader extends PluginBase {
 	/** @var array<string|mixed> $sessions */
 	public array $sessions = [];
 
-	protected function onLoad() : void {
-		self::setInstance($this);
-	}
-
 	protected function onEnable() : void {
+		self::setInstance($this);
 		$this->getServer()->getCommandMap()->register('advanceditem', new AdvancedItem($this));
 		$this->saveResource('config.yml');
 		$this->saveResource('messages.yml');
